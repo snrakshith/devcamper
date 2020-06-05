@@ -2,14 +2,18 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const colors = require("colors");
-
-// Import Route Files
-const bootcampsRoute = require("./routes/bootcamps");
+const connectDB = require("./config/db");
 
 // Mounting Env Variables
 dotenv.config({
   path: "./config/config.env",
 });
+
+// Connect to DateBase
+connectDB();
+
+// Import Route Files
+const bootcampsRoute = require("./routes/bootcamps");
 
 // Inistalize an Express Router
 const app = express();
